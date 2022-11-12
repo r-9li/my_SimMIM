@@ -1,0 +1,70 @@
+AMP_OPT_LEVEL: O0
+AUG:
+  AUTO_AUGMENT: rand-m9-mstd0.5-inc1
+  COLOR_JITTER: 0.4
+  CUTMIX: 1.0
+  CUTMIX_MINMAX: null
+  MIXUP: 0.8
+  MIXUP_MODE: batch
+  MIXUP_PROB: 1.0
+  MIXUP_SWITCH_PROB: 0.5
+  RECOUNT: 1
+  REMODE: pixel
+  REPROB: 0.25
+BASE:
+- ''
+DATA:
+  BATCH_SIZE: 1
+  DATASET: imagenet
+  DATA_PATH: /home/r/SimMIM-main/ADEChallengeData2016/images
+  IMG_SIZE: 512
+  INTERPOLATION: bicubic
+  MASK_PATCH_SIZE: 32
+  MASK_RATIO: 0.6
+  NUM_WORKERS: 8
+  PIN_MEMORY: true
+EVAL_MODE: false
+LOCAL_RANK: 0
+MODEL:
+  MIT:
+    OUTPUT_DIM: 512
+    SIZE: B5
+  NAME: simmim_pretrain
+  RESUME: ''
+  TYPE: mit
+OUTPUT: /home/r/SimMIM-main/output/simmim_pretrain/simmim_pretrain__mit_b5__img512__800ep
+PRETRAINED: ''
+PRINT_FREQ: 10
+SAVE_FREQ: 5
+SEED: 0
+TAG: simmim_pretrain__mit_b5__img512__800ep
+TEST:
+  CROP: true
+THROUGHPUT_MODE: false
+TRAIN:
+  ACCUMULATION_STEPS: 0
+  AUTO_RESUME: true
+  BASE_LR: 1.953125e-07
+  CLIP_GRAD: 5.0
+  EPOCHS: 800
+  LAYER_DECAY: 1.0
+  LR_SCHEDULER:
+    DECAY_EPOCHS: 30
+    DECAY_RATE: 0.1
+    GAMMA: 0.1
+    MULTISTEPS:
+    - 700
+    NAME: multistep
+  MIN_LR: 9.765625e-09
+  OPTIMIZER:
+    BETAS:
+    - 0.9
+    - 0.999
+    EPS: 1.0e-08
+    MOMENTUM: 0.9
+    NAME: adamw
+  START_EPOCH: 0
+  USE_CHECKPOINT: false
+  WARMUP_EPOCHS: 10
+  WARMUP_LR: 9.765625e-10
+  WEIGHT_DECAY: 0.05

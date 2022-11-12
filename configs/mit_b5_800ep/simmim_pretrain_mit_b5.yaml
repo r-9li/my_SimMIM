@@ -1,0 +1,23 @@
+MODEL:
+  TYPE: mit
+  NAME: simmim_pretrain
+  MIT:
+    SIZE: B5
+    OUTPUT_DIM: 512
+DATA:
+  IMG_SIZE: 512
+  MASK_PATCH_SIZE: 32
+  MASK_RATIO: 0.6
+TRAIN:
+  EPOCHS: 800
+  WARMUP_EPOCHS: 10
+  BASE_LR: 1e-4
+  WARMUP_LR: 5e-7
+  WEIGHT_DECAY: 0.05
+  LR_SCHEDULER:
+    NAME: 'multistep'
+    GAMMA: 0.1
+    MULTISTEPS: [700,]
+PRINT_FREQ: 10
+SAVE_FREQ: 5
+TAG: simmim_pretrain__mit_b5__img512__800ep
